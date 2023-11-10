@@ -1,4 +1,18 @@
-.me-img {
-    width:166px;
-    height:225px;
+.left{
+    background-color:rgba(0,0,0,.025);
+    border-right:1px solid rgba(0,0,0,.05);
+    float:right;
+    height:100%;
+    margin-left:-1px;
+    min-width:256px;
+    position:fixed;
+    width:33.33%;
+}
+
+.me-img{
+    margin:0 auto;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #333;
+    display: block;
 }
