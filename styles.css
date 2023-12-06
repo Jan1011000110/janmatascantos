@@ -56,16 +56,14 @@ body {
     margin-top: 0;
 }
 
-
-
 /* Socials */
 
 .socials {
-    bottom: 20px;
-    left: 20px;
-    position: fixed;
+    display: flex;
+    justify-content: center;    
 }
 
 .socials-icon img {
     width: 20px;
+    filter: grayscale(100%)
 }
