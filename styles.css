@@ -1,0 +1,64 @@
+/* Import font-family */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+
+
+/* Body */
+
+body {
+    margin-left: 0;
+}
+
+/* Left division block */
+
+.left {
+    width: 30%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.025);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    position: fixed; /* so that when scrolling it doesnt changes*/
+    padding-top: 15%;
+}
+
+/* Profile Image */
+
+.block-img {
+    display: flex;
+    justify-content: center;
+}
+
+.me-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Personal Info */ 
+
+.personal-info {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.personal-info h1 {
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 0;
+}
+
+.personal-info p {
+    font-family: 'Poppins';
+    font-style: italic;
+    margin-top: 0;
+}
+
+
+
+/* Socials Icons */
+
+.socials-icon img {
+    width: 20px;
+}
