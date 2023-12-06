@@ -8,12 +8,13 @@
 
 body {
     margin-left: 0;
+    height: 2000px;
 }
 
 /* Left division block */
 
 .left {
-    width: 30%;
+    width: 20%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.025);
     border-right: 1px solid rgba(0, 0, 0, 0.05);
@@ -57,7 +58,13 @@ body {
 
 
 
-/* Socials Icons */
+/* Socials */
+
+.socials {
+    bottom: 20px;
+    left: 20px;
+    position: fixed;
+}
 
 .socials-icon img {
     width: 20px;
