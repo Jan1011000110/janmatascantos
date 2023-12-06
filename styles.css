@@ -61,9 +61,11 @@ body {
 .socials {
     display: flex;
     justify-content: center;    
+    gap: 10px;
 }
 
 .socials-icon img {
-    width: 20px;
+    height: 25px;
+    width: 25px;
     filter: grayscale(100%)
 }
