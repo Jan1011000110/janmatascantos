@@ -1,7 +1,8 @@
 /* Import font-family */
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
 /* Body */
@@ -67,4 +68,26 @@ body {
 .socials-icon img {
     height: 25px;
     width: 25px;
+}
+
+/* Right division block */
+
+.right {
+    width: 80%;
+    margin-left: 21%;
+}
+
+/* Description */
+
+.title-description h1 {
+    font-family: sans-serif;
+}
+
+.title-description h1,
+.description p {
+    text-align: center;
+}
+
+.description {
+    margin: auto 20%;
 }
