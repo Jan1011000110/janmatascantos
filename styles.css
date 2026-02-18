@@ -1,130 +1,93 @@
-/* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Red+Hat+Mono&display=swap');
+/* Import font-family */
 
-/* Reset default browser styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+/* Body */
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    background-color: #fff;
-    /* Removed fixed height 2000px */
+    margin-left: 0;
+    height: 2000px;
 }
 
-/* --- Left Sidebar --- */
+/* Left division block */
+
 .left {
-    width: 25%; /* Slightly wider for better readability */
+    width: 20%;
     height: 100vh;
-    background-color: #f8f9fa; /* Lighter, cleaner gray */
-    border-right: 1px solid #e0e0e0;
-    position: fixed;
-    top: 0;
-    left: 0;
+    background-color: rgba(0, 0, 0, 0.025);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    position: fixed; /* so that when scrolling it doesnt changes*/
+    padding-top: 15%;
+}
+
+/* Profile Image */
+
+.block-img {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Centers content vertically */
-    padding: 20px;
-    z-index: 10;
+    justify-content: center;
 }
 
 .me-img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Adds a nice pop */
-    margin-bottom: 20px;
 }
+
+/* Personal Info */ 
 
 .personal-info {
     text-align: center;
-    margin-bottom: 2em;
+    margin-top: 2em;
 }
 
 .personal-info h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #222;
-    margin-bottom: 5px;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 0;
 }
 
 .personal-info p {
-    font-size: 0.9rem;
-    color: #666;
-    font-style: normal; /* Poppins looks better non-italic here */
+    font-family: 'Poppins';
+    font-style: italic;
+    margin-top: 0;
 }
 
 /* Socials */
+
 .socials {
     display: flex;
-    gap: 15px;
+    justify-content: center;    
+    gap: 10px;
 }
 
 .socials-icon img {
-    height: 28px;
-    width: 28px;
-    transition: transform 0.2s ease;
+    height: 25px;
+    width: 25px;
 }
 
-.socials-icon img:hover {
-    transform: scale(1.1); /* Hover effect */
-}
+/* Right division block */
 
-/* --- Right Content --- */
 .right {
-    width: 75%;
-    margin-left: 25%; /* Matches the left width */
-    padding: 80px 10%; /* More breathing room */
+    width: 80%;
+    margin-left: 21%;
 }
 
-.content-block {
-    margin-bottom: 60px; /* Space between sections */
-    max-width: 800px; /* Prevents text from getting too wide to read */
-    margin-left: auto;
-    margin-right: auto;
-}
+/* Description */
 
 .title-description h1 {
-    font-size: 2.5rem;
-    color: #222;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #eee; /* Underline effect */
-    display: inline-block;
-    padding-bottom: 5px;
+    font-family: sans-serif;
 }
 
+.title-description h1,
 .description p {
-    font-size: 1.1rem;
-    line-height: 1.8; /* Improves readability */
-    color: #444;
-    text-align: justify; /* Or left, depending on preference */
+    text-align: center;
 }
 
-/* --- Mobile Responsiveness --- */
-@media (max-width: 768px) {
-    /* Make the sidebar a top header */
-    .left {
-        width: 100%;
-        height: auto; /* Adapts to content size */
-        position: relative; /* Scrolls with page */
-        padding: 40px 20px;
-        border-right: none;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    /* Make the content take full width */
-    .right {
-        width: 100%;
-        margin-left: 0;
-        padding: 40px 20px;
-    }
-
-    .title-description h1 {
-        font-size: 2rem;
-    }
+.description {
+    margin: auto 20%;
 }
