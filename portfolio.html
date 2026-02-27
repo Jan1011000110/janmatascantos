@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jan Matas Cantos | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f7f7f5;
+      --border: #e8e8e4;
+      --text: #1a1a1a;
+      --muted: #888880;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 7%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 7% 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner { max-width: 700px; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.73rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    h1.hero-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    h1.hero-name em { font-style: italic; color: var(--muted); }
+    .hero-bio {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #666;
+      max-width: 500px;
+      margin-bottom: 44px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 26px;
+      background: var(--text);
+      color: #fff;
+      font-size: 0.84rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.75; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 26px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.84rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: #aaa; }
+    .hero-stats {
+      display: flex; gap: 52px; flex-wrap: wrap;
+      margin-top: 68px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.85rem;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .stat-label { font-size: 0.76rem; color: var(--muted); }
+
+    /* SECTIONS */
+    section { padding: 96px 7%; border-bottom: 1px solid var(--border); }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      margin-bottom: 52px;
+    }
+    .section-title em { font-style: italic; color: var(--muted); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+    .about-text p { font-size: 0.98rem; line-height: 1.85; color: #666; margin-bottom: 1.3em; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+    .skill-row { margin-bottom: 22px; }
+    .skill-row-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      padding: 5px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.78rem;
+      color: #555;
+      font-family: 'DM Mono', monospace;
+      transition: border-color 0.2s;
+    }
+    .tag:hover { border-color: #bbb; }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+    .project-card {
+      padding: 32px 28px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .project-card:hover { background: var(--surface); }
+    .project-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.67rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .project-award {
+      display: inline-block;
+      font-size: 0.73rem;
+      color: #7a6a4a;
+      background: #fdf8ee;
+      border: 1px solid #e8d9a8;
+      padding: 3px 9px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+    }
+    .project-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.18rem;
+      font-weight: 400;
+      margin-bottom: 9px;
+    }
+    .project-desc { font-size: 0.86rem; line-height: 1.7; color: var(--muted); margin-bottom: 22px; }
+    .project-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .project-stack { display: flex; gap: 5px; flex-wrap: wrap; }
+    .stack-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      padding: 2px 7px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .project-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--text); }
+
+    /* AWARDS */
+    .award-item {
+      display: flex; align-items: center; gap: 22px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .award-item:first-child { border-top: 1px solid var(--border); }
+    .award-icon { font-size: 1.2rem; min-width: 32px; }
+    .award-name { font-size: 0.93rem; font-weight: 500; margin-bottom: 3px; }
+    .award-sub { font-size: 0.78rem; color: var(--muted); }
+
+    /* EDUCATION */
+    .edu-item {
+      display: grid; grid-template-columns: 130px 1fr; gap: 40px;
+      padding: 26px 0; border-bottom: 1px solid var(--border);
+    }
+    .edu-item:first-child { border-top: 1px solid var(--border); }
+    .edu-year { font-family: 'DM Mono', monospace; font-size: 0.73rem; color: var(--muted); padding-top: 3px; }
+    .edu-school { font-family: 'Instrument Serif', serif; font-size: 1.02rem; margin-bottom: 5px; }
+    .edu-degree { font-size: 0.86rem; color: #666; margin-bottom: 5px; }
+    .edu-detail { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+    /* CONTACT */
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .contact-text p { font-size: 0.98rem; line-height: 1.8; color: #666; }
+    .contact-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      font-size: 0.86rem;
+      transition: color 0.2s;
+    }
+    .contact-link:first-child { border-top: 1px solid var(--border); }
+    .contact-link:hover { color: var(--muted); }
+    .contact-link-icon { color: var(--muted); min-width: 18px; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 26px 7%;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.5s ease 0.1s both; }
+    h1.hero-name  { animation: fadeUp 0.5s ease 0.2s both; }
+    .hero-bio     { animation: fadeUp 0.5s ease 0.3s both; }
+    .hero-ctas    { animation: fadeUp 0.5s ease 0.4s both; }
+    .hero-stats   { animation: fadeUp 0.5s ease 0.5s both; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .edu-item { grid-template-columns: 1fr; gap: 4px; }
+      .nav-links { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Jan Matas Cantos</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <img src="images/profile.png" alt="Jan Matas" style="width:96px;height:96px;border-radius:50%;object-fit:cover;margin-bottom:28px;border:1px solid var(--border);">
+      <div class="hero-eyebrow">Mathematics &amp; Data Science Engineering · UPC Barcelona</div>
+      <h1 class="hero-name">Jan Matas<br><em>Cantos.</em></h1>
+      <p class="hero-bio">
+        Competitive programmer, ML practitioner, and algorithm enthusiast — enrolled in the selective CFIS dual-degree program at UPC.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View my work →</a>
+        <a href="Jan_Matas_CV.pdf" download class="btn-outline">Download CV</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-num">Top 2%</span><span class="stat-label">Codeforces rating</span></div>
+        <div><span class="stat-num">27th</span><span class="stat-label">SWERC 2024</span></div>
+        <div><span class="stat-num">9.56</span><span class="stat-label">GPA at UPC CS</span></div>
+        <div><span class="stat-num">2nd</span><span class="stat-label">HackUPC Optiver</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-label">01 — About</div>
+    <div class="section-title">Who I <em>am</em></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>Mathematics and Data Science Engineering</strong> student at the Polytechnic University of Catalonia (UPC), enrolled in the highly selective <strong>CFIS</strong> program — simultaneously pursuing two full degrees.</p>
+        <p>My core interests sit at the intersection of <strong>algorithm design</strong> and <strong>machine learning</strong>. I love competitive programming and apply those skills to real-world data challenges, hackathons, and personal projects.</p>
+        <p>Beyond the screen, I volunteer as a <strong>problem setter</strong> for the Spanish Olympiad in Informatics and as a youth counselor, fostering values like equality and empathy.</p>
+      </div>
+      <div>
+        <div class="skill-row">
+          <div class="skill-row-label">Core Languages</div>
+          <div class="tags"><span class="tag">C++</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">JavaScript</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row-label">ML / Data Science</div>
+          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Keras</span><span class="tag">Pandas</span><span class="tag">NumPy</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row-label">Tools</div>
+          <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">SQLite</span><span class="tag">HTML/CSS</span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row-label">Languages</div>
+          <div class="tags"><span class="tag">Catalan</span><span class="tag">Spanish</span><span class="tag">English</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-label">02 — Projects</div>
+    <div class="section-title">Selected <em>work</em></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-type">Hackathon · Trading</div>
+        <div class="project-award">🥈 2nd place — HackUPC Optiver Challenge</div>
+        <div class="project-title">Algorithmic Stock Trader</div>
+        <p class="project-desc">Built an algorithm to optimize stock trading transactions and maximize profits under real market conditions during a 24h hackathon.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Optimization</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-type">Datathon · Healthcare</div>
+        <div class="project-award">🏅 Honorable Mention — Datathon Barcelona 2023</div>
+        <div class="project-title">Hospital Supply Classifier</div>
+        <p class="project-desc">Developed a machine learning pipeline to classify hospital supply data from real clinical records, helping optimize resource allocation.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Pandas</span><span class="stack-tag">ML</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-type">Tool · Education</div>
+        <div class="project-title">Teacher Group Maker</div>
+        <p class="project-desc">A Python app that helps teachers automatically form balanced student groups using heuristic algorithms, reducing manual effort each semester.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Heuristics</span></div>
+          <a href="https://github.com/Jan1011000110" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-type">Volunteering · Competitive Programming</div>
+        <div class="project-title">Olympiad Problem Setter</div>
+        <p class="project-desc">Propose, design, and rigorously test problems for the National Spanish Olympiad in Informatics — difficulty calibration and correctness.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">C++</span><span class="stack-tag">Algorithms</span></div>
+          <a href="https://olimpiada-informatica.org" class="project-link" target="_blank">olimpiada-informatica.org →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-type">Portfolio · Web</div>
+        <div class="project-title">This Portfolio</div>
+        <p class="project-desc">Designed and built from scratch using semantic HTML and CSS — no frameworks. Focused on clean layout, responsiveness, and clear information hierarchy.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span></div>
+          <a href="https://github.com/Jan1011000110" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="section-label">03 — Recognition</div>
+    <div class="section-title">Honors &amp; <em>Awards</em></div>
+    <div>
+      <div class="award-item"><div class="award-icon">🥇</div><div><div class="award-name">Gold Medal — VI Catalan Olympiad in Informatics</div><div class="award-sub">Universitat Politècnica de Catalunya</div></div></div>
+      <div class="award-item"><div class="award-icon">🏆</div><div><div class="award-name">Codeforces Candidate Master — Top 2% globally</div><div class="award-sub">Maximum rating of 2000</div></div></div>
+      <div class="award-item"><div class="award-icon">🌍</div><div><div class="award-name">27th Place — SWERC 2024</div><div class="award-sub">ICPC South-Western Europe Regional Contest, representing UPC</div></div></div>
+      <div class="award-item"><div class="award-icon">🥈</div><div><div class="award-name">2nd Place — HackUPC Optiver Challenge</div><div class="award-sub">Algorithmic stock trading optimization</div></div></div>
+      <div class="award-item"><div class="award-icon">🏅</div><div><div class="award-name">Honorable Mention — Datathon Barcelona 2023</div><div class="award-sub">Hospital supply classification with real clinical data</div></div></div>
+      <div class="award-item"><div class="award-icon">💡</div><div><div class="award-name">Top 600 — Meta Hacker Cup 2024</div><div class="award-sub">Prestigious international programming competition</div></div></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-label">04 — Education</div>
+    <div class="section-title">Academic <em>path</em></div>
+    <div>
+      <div class="edu-item">
+        <div class="edu-year">2024 → 2028</div>
+        <div><div class="edu-school">CFIS / Polytechnic University of Catalonia</div><div class="edu-degree">B.Sc. Mathematics + B.Sc. Data Science Engineering (Dual Degree)</div><div class="edu-detail">Honours in Algorithms · Selective entrance examination</div></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2023 → 2024</div>
+        <div><div class="edu-school">Polytechnic University of Catalonia</div><div class="edu-degree">B.Sc. Computer Science</div><div class="edu-detail">GPA 9.56/10 · Honours in 6/8 courses</div></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2022 → 2023</div>
+        <div><div class="edu-school">Harbour.Space University</div><div class="edu-degree">Algorithms &amp; Mathematics</div><div class="edu-detail">Trained by world-class competitive programmers</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="github">
+    <div class="section-label">05 — GitHub</div>
+    <div class="section-title">Open <em>source</em></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-type">Competitive Programming · C++</div>
+        <div class="project-title">cp-templates</div>
+        <p class="project-desc">A personal library of optimized C++ templates used in competitive programming contests — data structures, algorithms, and utility snippets refined through hundreds of problems.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">C++</span><span class="stack-tag">Algorithms</span></div>
+          <a href="https://github.com/Jan1011000110/cp-templates" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Hackathon · Trading</div>
+        <div class="project-award">🥈 2nd place — HackUPC Optiver Challenge</div>
+        <div class="project-title">Trading Bot — Optiver</div>
+        <p class="project-desc">Algorithmic trading bot developed during HackUPC 2024. Optimizes stock transaction decisions to maximize profit under real market simulation conditions.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Finance</span><span class="stack-tag">Optimization</span></div>
+          <a href="https://github.com/Jan1011000110/HackUPC-2024" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Machine Learning · Notebooks</div>
+        <div class="project-title">Machine Learning Projects</div>
+        <p class="project-desc">A collection of ML experiments and projects in Jupyter Notebooks — covering model training, data analysis, and applied deep learning with PyTorch and TensorFlow.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span><span class="stack-tag">PyTorch</span></div>
+          <a href="https://github.com/Jan1011000110/Machine-learning-projects" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Datathon · Healthcare</div>
+        <div class="project-award">🏅 Honorable Mention — Datathon Barcelona 2023</div>
+        <div class="project-title">FME Datathon 2023</div>
+        <p class="project-desc">ML pipeline built to analyze and classify real hospital supply data. Developed in collaboration with a team during the FME Datathon Barcelona 2023.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Pandas</span><span class="stack-tag">ML</span></div>
+          <a href="https://github.com/Jan1011000110/FME-datathon-2023" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">Research · Algorithms</div>
+        <div class="project-title">Algorithms in Real Life</div>
+        <p class="project-desc">A written research project exploring practical applications of classical algorithms outside of competitive programming — written in LaTeX.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">LaTeX</span><span class="stack-tag">Research</span></div>
+          <a href="https://github.com/Jan1011000110/Usage-of-algorithms-in-real-life" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type">University · Systems</div>
+        <div class="project-title">EC Labs</div>
+        <p class="project-desc">Lab work from the Computer Architecture course at UPC — low-level programming exercises in Assembly exploring memory, registers, and processor instructions.</p>
+        <div class="project-footer">
+          <div class="project-stack"><span class="stack-tag">Assembly</span><span class="stack-tag">Architecture</span></div>
+          <a href="https://github.com/Jan1011000110/EC-Labs" class="project-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">06 — Contact</div>
+    <div class="section-title">Get in <em>touch</em></div>
+    <div class="contact-inner">
+      <div class="contact-text">
+        <p>I'm open to internship opportunities, research collaborations, or just interesting conversations about algorithms and data. Reach out — I respond quickly.</p>
+      </div>
+      <div>
+        <a href="/cdn-cgi/l/email-protection#355f545b585441544656755258545c591b565a58" class="contact-link"><span class="contact-link-icon">✉</span> <span class="__cf_email__" data-cfemail="88e2e9e6e5e9fce9fbebc8efe5e9e1e4a6ebe7e5">[email&#160;protected]</span></a>
+        <a href="https://github.com/Jan1011000110" target="_blank" class="contact-link"><span class="contact-link-icon">⌥</span> github.com/Jan1011000110</a>
+        <a href="https://codeforces.com/profile/JanBobi" target="_blank" class="contact-link"><span class="contact-link-icon">⌘</span> codeforces.com/profile/JanBobi</a>
+        <a href="https://linkedin.com/in/jan-matas-cantos049361286/" target="_blank" class="contact-link"><span class="contact-link-icon">↗</span> l
